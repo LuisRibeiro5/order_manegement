@@ -141,13 +141,11 @@ void pop(pilha_dinamica<T>& pilha ){
 }
 
 template<typename T>
-void mostra(pilha_dinamica<T>& pilha ){
+void mostra(pilha_dinamica<T>& pilha) {
     std::cout << "[";
-    for (int i = 1; i <= pilha.cardinalidade; i++)
-    {
+    for (int i = pilha.cardinalidade; i >= 1; i--) {
+        if (i != pilha.cardinalidade) std::cout << ", ";
         std::cout << "'" << getElem(pilha, i) << "'";
-
-        if(i != pilha.cardinalidade) std::cout << ", ";
     }
     std::cout << "]";
 }

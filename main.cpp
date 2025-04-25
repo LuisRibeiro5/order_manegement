@@ -8,8 +8,10 @@ using namespace std;
 int main() {
     fila_dinamica<Pedido> filaDePedidos;
     lista_dinamica<Pedido> listaPedidoEmProcesso;
+    lista_dinamica<Pedido> listaProcessados;
 
     cria(filaDePedidos);
+    cria(listaProcessados);
     cria(listaPedidoEmProcesso);
 
     int opcao = 0;
@@ -19,18 +21,18 @@ int main() {
         visualizarFilaDePedidos(filaDePedidos);
         visualizarListaDePedidosEmProceso(listaPedidoEmProcesso);
         cout << "\n\n";
-        cout << "Escolha uma ação:\n"
+        cout << "Escolha uma acao:\n"
             "1. Adicionar Pedido\n"
             "2. Visualizar Fila de Pedidos\n"
-            "3. Processar Próximo Pedido\n"
+            "3. Processar Proximo Pedido\n"
             "4. Atualizar Status do Pedido\n"
             "5. Visualizar Status Atual do Pedido\n"
-            "6. Visualizar Histórico de Status do Pedido\n"
+            "6. Visualizar Historico de Status do Pedido\n"
             "7. Sair\n";
 
         do
         {
-            cout << ">";
+            cout << "Digite sua escolha: ";
             cin >> opcao;
         } while (opcao < 1 || opcao > 7);
         cin.ignore();
@@ -38,7 +40,7 @@ int main() {
         switch (opcao)
         {
         case 1:
-            receberPedidos(filaDePedidos);
+            receberPedidos(filaDePedidos, listaProcessados);
             break;
         
         case 2:
@@ -48,7 +50,7 @@ int main() {
         case 3:{
                 try
                 {
-                    Pedido p = processarPedido(filaDePedidos);
+                    Pedido p = processarPedido(filaDePedidos, listaProcessados);
                     int pos = numeroElementos(listaPedidoEmProcesso) + 1;
                     insere(listaPedidoEmProcesso, p, pos);
                 }
