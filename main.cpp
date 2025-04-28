@@ -87,6 +87,7 @@ int main() {
 
     destroiFilaPedidos(filaDePedidos);
     destroiListaPedidos(listaPedidoEmProcesso);
+    destroiListaPedidos(listaProcessados);
     
     return 0;
 }
